@@ -1,5 +1,6 @@
 """Utilities for copying files with a simple ``cp`` command."""
 
+
 def copy_file(command: str) -> None:
     """Copy a file when command has the form ``cp source target``."""
     command_parts = command.split()
