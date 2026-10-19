@@ -1,8 +1,5 @@
 """Utilities for copying files with a simple ``cp`` command."""
 
-import shutil
-
-
 def copy_file(command: str) -> None:
     """Copy a file when command has the form ``cp source target``."""
     command_parts = command.split()
@@ -14,6 +11,9 @@ def copy_file(command: str) -> None:
         return
 
     try:
-        shutil.copyfile(source_file_name, target_file_name)
+        with open(source_file_name, "r") as source_file, open(
+            target_file_name, "w"
+        ) as target_file:
+            target_file.write(source_file.read())
     except OSError:
         return
